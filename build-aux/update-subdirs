@@ -25,6 +25,8 @@ for file in *; do
     case $file in
 	*.elc | *.el | term | RCS | CVS | Old | . | .. | =* | *~ | *.orig | *.rej)
 	  ;;
+	cedet | obsolete | play | mh-e | erc)
+	  ;;
 	*)
             if [ -d "$file" ]; then
 		if [ "$file" = "obsolete" ]; then

@@ -109,7 +109,6 @@ COMPILE_FIRST += $(lisp)/emacs-lisp/autoload.elc
 
 # Files to compile early in compile-main.  Works around bug#25556.
 MAIN_FIRST = ./emacs-lisp/eieio.el ./emacs-lisp/eieio-base.el \
-  ./cedet/semantic/db.el
 
 # Prevent any settings in the user environment causing problems.
 unexport EMACSDATA EMACSDOC EMACSPATH
@@ -119,7 +118,7 @@ unexport EMACSDATA EMACSDOC EMACSPATH
 emacs = EMACSLOADPATH= '$(EMACS)' $(EMACSOPT)
 
 ## Subdirectories, relative to builddir.
-SUBDIRS = $(sort $(shell find ${srcdir} -type d -print))
+SUBDIRS := $(filter-out ${srcdir}/cedet% ${srcdir}/obsolete% ${srcdir}/play% ${srcdir}/mh-e% ${srcdir}/erc%,$(sort $(shell find ${srcdir} -type d -print)))
 ## Subdirectories, relative to srcdir.
 SUBDIRS_REL = $(patsubst ${srcdir}%,.%,${SUBDIRS})
 ## All subdirectories except 'obsolete' and 'term'.
@@ -378,7 +377,7 @@ compile-clean:
 
 ## make -C ../admin/unidata all should be here, but that would race
 ## with ../src.  See comments above for loaddefs.
-gen-lisp: leim semantic
+gen-lisp: leim
 
 # (re)compile titdic-cnv before recursing into `leim` since its used to
 # generate some of the Quail source files from tables.

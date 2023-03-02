@@ -314,8 +314,8 @@ Possible values:
 `display'	Display buffer in another window without switching to it
 `otherframe'	Show new buffer in another frame
 `maybe-frame'	If a buffer is visible in another frame, prompt to ask if
-		you want to see the buffer in the same window of the current
-  		frame or in the other frame.
+                you want to see the buffer in the same window of the current
+                frame or in the other frame.
 `always-frame'  If a buffer is visible in another frame, raise that
 		frame.  Otherwise, visit the buffer in the same window."
     :type '(choice (const samewindow)
